@@ -1,6 +1,6 @@
 const list = document.querySelector('.list');
 const btn = document.querySelector('.load-more');
-const PHOTOS_PER_PAGE = 12;
+const PHOTOS_PER_PAGE = 14; // в менен 1900 на 1200 тож в мене буде чітко два рядка
 let PAGES = 1;
 let url = `https://pixabay.com/api/?key=33269334-153df37cf3d3b5df8a7732977&per_page=${PHOTOS_PER_PAGE}&page=${PAGES}`;
 
@@ -10,10 +10,8 @@ function getData(url) {
 
 function renderData(obj) {
     const dataArray = obj.hits;
-    console.log(dataArray)
-    const markUp = dataArray.map((el) => `<li><img src=${el.webformatURL}></li>`).join('');
-    
-    btn.insertAdjacentHTML("beforebegin", markUp)
+    const markUp = dataArray.map((el) => `<li><img src="${el.webformatURL}"></li>`).join('');
+    list.insertAdjacentHTML("beforeend", markUp);
 }
 
 btn.addEventListener('click', () => {
